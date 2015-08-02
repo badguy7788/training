@@ -25,8 +25,10 @@ public:
         int cols;
         int pos;
         string temp;
-
-        cols = (s.length() + 2*numRows - 2)/(2 * numRows - 2);
+cout<< "s1.length() = "<< s.length()<< endl;
+        if(numRows == 0 || numRows == 1)
+            return "";
+        cols = (s.length() + 2*numRows - 2)/(2 * numRows - 2) + 1;
         cout<< "s.length() = "<< s.length()<< endl;
         cout<< "cols = "<< cols<< endl;
         for(int i = 0; i < numRows; ++i)
@@ -38,9 +40,9 @@ public:
 //                cout<< "pos = "<< pos<< endl;
 //                cout<< "i = "<< i<< endl;
 
-                if(pos - i >= 0 && pos - i < s.length() )
+                if(pos - i >= 0 && pos - i < s.length()  && i < numRows - 1)
                     temp += s.at(pos - i);
-                if(pos + i > 0 && pos + i < s.length() && i != 0 && pos + i != pos - i && i != numRows - 1)
+                if(pos + i > 0 && pos + i < s.length() && i != 0 && pos + i != pos - i)
                     temp += s.at(pos + i);
             }
 
@@ -52,9 +54,9 @@ public:
 
 int main()
 {
-//    string str("PAYPALISHIRINGOPQS");
-    string str("");
+    string str("PAYPALISHIRINGOPQS");
+   // string str("ABC");
     Solution s;
-    cout<< "result: "<< s.convert(str, 1)<< endl;
+    cout<< "result: "<< s.convert(str, 3)<< endl;
     return 0;
 }
